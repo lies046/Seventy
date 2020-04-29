@@ -55,8 +55,8 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-    account_path(resource)
-  end
+  # The path used after sign up for inactive accounts.
+  # def after_inactive_sign_up_path_for(resource)
+  #   account_path(resource)
+  # end
 end
