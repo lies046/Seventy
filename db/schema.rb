@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_04_29_012309) do
     t.string "address"
     t.string "business_day"
     t.string "regular_holiday"
-    t.integer "opening_hours"
-    t.integer "closing_time"
+    t.time "opening_hours"
+    t.time "closing_time"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

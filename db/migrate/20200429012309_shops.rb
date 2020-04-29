@@ -5,8 +5,8 @@ class Shops < ActiveRecord::Migration[6.0]
       t.string :address
       t.string :business_day
       t.string :regular_holiday
-      t.integer :opening_hours
-      t.integer :closing_time
+      t.time :opening_hours
+      t.time :closing_time
       t.string :image
 
       t.timestamps
