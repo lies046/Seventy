@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   #管理用
   namespace :admin do
     root "top#index"
-    resources :accounts, only: [:show]
+    resources :accounts, only: [:show] do
     resources :shops
+    end
   end
 end
