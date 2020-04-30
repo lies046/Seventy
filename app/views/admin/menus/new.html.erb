@@ -1,6 +1,8 @@
 <%= render "admin/header"%>
 
-<div class="container">
+<div class="container-fluid">
+  <div class="row">
+<%= render "layouts/sidebar"%>
   <div class="col-sm-6 mx-auto mt-5">
     <%= render 'layouts/flash_messages' %>
   <%= form_with url: admin_account_menus_path, model: @menu,local: true do |f| %>
@@ -21,6 +23,7 @@
       </div>
       <%= f.submit "Submit", class: "btn btn-primary "%>
     <% end %>
+    </div>
   </div>
 </div>
 
