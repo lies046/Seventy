@@ -1,37 +1,55 @@
-<body class="text-center account-form">
+<body class="text-center mt-5">
 
 <h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
+  <div class="container">
+  <div class="form-group">
     <%= f.label :shop_name %><br />
-    <%= f.text_field :shop_name %>
+    <%= f.text_field :shop_name,class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+        
+  <div class="form-group">
+    <%= f.label :regular_holiday %>
+    <%= f.text_field :regular_holiday, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :opening_hours %>
+    <%= f.time_select :opening_hours,:minute_step => 15 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :closing_time %>
+    <%= f.time_select :closing_time, :minute_step => 15 %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password",class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録", class: "btn btn-primary "%>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>
 </body>

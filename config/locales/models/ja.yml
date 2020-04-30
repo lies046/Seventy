@@ -6,7 +6,6 @@ ja:
         shop_name: 店名
         password: パスワード
         password_confirmation: 確認用パスワード
-      shop:
         address: 住所
         business_day: 営業日
         regular_holiday: 定休日

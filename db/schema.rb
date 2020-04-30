@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_012309) do
+ActiveRecord::Schema.define(version: 2020_04_30_014758) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "shop_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "address"
+    t.string "regular_holiday"
+    t.time "opening_hours"
+    t.time "closing_time"
+    t.string "image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -25,17 +30,12 @@ ActiveRecord::Schema.define(version: 2020_04_29_012309) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
-  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "account_id"
-    t.string "address"
-    t.string "business_day"
-    t.string "regular_holiday"
-    t.time "opening_hours"
-    t.time "closing_time"
+    t.string "product_name", null: false
+    t.integer "price", null: false
     t.string "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_shops_on_account_id"
+    t.index ["account_id"], name: "index_menus_on_account_id"
   end
 
 end
