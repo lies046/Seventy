@@ -11,10 +11,24 @@
 
       <h2>店舗情報</h2>
       <div class="table-responsive">
-          <% @menu.each do |menu|%>
-            <%= image_tag menu.image.thumb.url, class: "float-right mb-4 ml-4" %>
-            <% end %>
+      <div class="container">
+        <div class="row">
+        <% @menu.each do |menu|%>
+        <div class="row">
+  <div class="col-sm-6 col-md-3">
+          <div class="card border-primary m-4" style="width: 300px;">            
+            <%= link_to image_tag(menu.image.thumb.url,  size: '298x200'), edit_admin_account_menu_path(current_account.id, menu.id) %>
+              <div class="card-body">
+                <p class="card-text">  <%= menu.product_name %> <%= menu.price %>円</p>
+              </div>
+          </div>
+                </div>
+          </div>
+
+        <% end %>
+        </div>
       </div>
     </main>
   </div>
-</div>
+
+
