@@ -5,11 +5,12 @@ class Admin::MenusController < ApplicationController
   end
 
   def create
-    @Menu = Menu.new(menu_params)
+    @menu = Menu.new(menu_params)
     @menu.account_id = current_account.id
 
     if @menu.save
-      redirect_to  admin_account_path(current_account.id)
+      flash[:success] = "商品を登録しました。"
+      redirect_to  new_admin_account_menu_path(current_account.id)
     else
       render :new
     end
@@ -17,7 +18,7 @@ class Admin::MenusController < ApplicationController
 
   private
   def menu_params
-    params.require(:shop).permit(:product_name, :price, :image)
+    params.require(:menu).permit(:product_name, :price, :image)
   end
 
 end

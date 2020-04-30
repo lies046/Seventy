@@ -11,3 +11,7 @@ ja:
         regular_holiday: 定休日
         opening_hours: 開店時間
         closing_time: 閉店時間
+      menu:
+        product_name: 商品名
+        price: 金額
+        image: 商品画像

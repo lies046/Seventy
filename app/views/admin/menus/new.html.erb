@@ -2,7 +2,8 @@
 
 <div class="container">
   <div class="col-sm-6 mx-auto mt-5">
-  <%= form_with url: admin_account_menus_path, model: @menu, id: "tblForm",local: true do |f| %>
+    <%= render 'layouts/flash_messages' %>
+  <%= form_with url: admin_account_menus_path, model: @menu,local: true do |f| %>
 
       <div class="form-group">
         <%= f.label :product_name %>
@@ -18,32 +19,8 @@
         <%= f.label :image %>
         <%= f.file_field :image, class: "form-control" %>
       </div>
-
-      <input id="btnAdd2" type="button" value="行追加" />
       <%= f.submit "Submit", class: "btn btn-primary "%>
     <% end %>
   </div>
 </div>
 
-
-
-<input id="btnAdd2" type="button" value="行追加" />
-<table id="tblForm2">
-<thead>
-<tr>
-<th>名前</th>
-
-<th>メールアドレス</th>
-<th>期限</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr style="display: none;">
-<td><input style="width: 150px;" name="name[]" type="text" /></td>
-<td><input style="width: 150px;" name="email[]" type="text" /></td>
-<td><input style="width: 150px;" name="date[]" type="text" /></td>
-<td><input class="btnDelete" type="button" value="削除" /></td>
-</tr>
-</tbody>
-</table>
