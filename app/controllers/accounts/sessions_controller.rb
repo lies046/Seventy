@@ -18,15 +18,14 @@ class Accounts::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
-
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
   # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-    account_path(resource)
+  protected
+  def after_sign_in_path_for(resource)
+    admin_account_path(resource.id)
   end
 end

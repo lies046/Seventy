@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :accounts, controllers: {   registrations: 'accounts/registrations',sessions: 'accounts/sessions' }
+  devise_for :accounts, controllers: { registrations: 'accounts/registrations', sessions: 'accounts/sessions'}
   root "top#index"
 
   #管理用

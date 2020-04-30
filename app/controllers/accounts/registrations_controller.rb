@@ -61,12 +61,13 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+  #アカウント情報編集時カレントパスワード入力不要
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
 
-  def after_sign_in_path_for(resource)
-    admin_account_path(resource.id)
+  def  after_sign_up_path_for(resource)
+    admin_account_path(resource)
   end
 
   def after_update_path_for(resource)

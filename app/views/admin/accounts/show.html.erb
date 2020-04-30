@@ -17,9 +17,10 @@
         <div class="row">
   <div class="col-sm-6 col-md-3">
           <div class="card border-primary m-4" style="width: 300px;">            
-            <%= link_to image_tag(menu.image.thumb.url,  size: '298x200'), edit_admin_account_menu_path(current_account.id, menu.id) %>
+            <%= image_tag menu.image.thumb.url %>
               <div class="card-body">
                 <p class="card-text">  <%= menu.product_name %> <%= menu.price %>円</p>
+                <%= link_to "商品情報編集", edit_admin_account_menu_path(current_account.id, menu.id), class:"btn btn-primary"%>
               </div>
           </div>
                 </div>

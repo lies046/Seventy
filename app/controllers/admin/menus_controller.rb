@@ -1,5 +1,5 @@
 class Admin::MenusController < ApplicationController
-
+  before_action :authenticate_account!
   def new
     @menu = Menu.new
   end
