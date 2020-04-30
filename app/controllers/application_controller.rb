@@ -8,12 +8,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:shop_name,:address, :regular_holiday, :opening_hours, :closing_time, :image])
   end
 
-  def after_sign_in_path_for(resource)
-    admin_account_path(resource.id)
-  end
-
-  def after_account_update_path_for(resource)
-    admin_account_path(resource.id)
-  end
 end
 
