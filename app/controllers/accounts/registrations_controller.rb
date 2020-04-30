@@ -66,11 +66,12 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-  def  after_sign_up_path_for(resource)
+  def after_sign_up_path_for(resource)
     admin_account_path(resource)
   end
 
   def after_update_path_for(resource)
     admin_account_path(resource.id)
   end
+
 end
