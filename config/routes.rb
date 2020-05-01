@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "top#index"
     resources :accounts, only: [:show] do
-    resources :menus
+      resources :menus
     end
   end
 end

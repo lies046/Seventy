@@ -17,9 +17,22 @@ class Admin::MenusController < ApplicationController
     end
   end
 
+  def edit
+    @menu = Menu.find(params[:id])
+  end
+
+  def update
+    @menu = Menu.find(params[:id])
+    @menu.update(menu_params)
+    if @menu.save
+      redirect_to admin_account_path(current_account.id)  
+    else
+      render :new
+    end
+  end
+
   private
   def menu_params
     params.require(:menu).permit(:product_name, :price, :image)
   end
-
 end
