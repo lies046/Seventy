@@ -12,7 +12,7 @@ class Admin::MenusController < ApplicationController
       flash[:success] = "商品を登録しました。"
       redirect_to  new_admin_account_menu_path(current_account.id)
     else
-      lash[:danger] = "商品の登録に失敗しました。"
+      flash[:danger] = "商品の登録に失敗しました。"
       render :new
     end
   end
@@ -25,8 +25,10 @@ class Admin::MenusController < ApplicationController
     @menu = Menu.find(params[:id])
     @menu.update(menu_params)
     if @menu.save
+      flash[:success] = "商品情報を更新しました。"
       redirect_to admin_account_path(current_account.id)  
     else
+      flash[:danger] = "商品情報の更新に失敗しました。"
       render :new
     end
   end
