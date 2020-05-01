@@ -19,7 +19,13 @@
 
       <div class="form-group">
         <%= f.label :image %>
-        <%= f.file_field :image, class: "form-control" %>
+        <%= f.file_field :image, id: "user_img", class: "form-control" %>
+        <% if @menu.image.present? %>
+          <%= image_tag @menu.image, id: :img_prev %>
+        <% else %>
+          <%= image_tag "noimage.png", id: :img_prev %>
+        <% end %>
+
       </div>
       <%= f.submit "Submit", class: "btn btn-primary "%>
     <% end %>

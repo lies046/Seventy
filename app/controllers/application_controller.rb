@@ -7,7 +7,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name, :address, :regular_holiday, :opening_hours, :closing_time, :image])
     devise_parameter_sanitizer.permit(:account_update, keys: [:shop_name,:address, :regular_holiday, :opening_hours, :closing_time, :image])
   end
-
-
 end
 
