@@ -40,7 +40,7 @@
     <%= f.label :image %>
     <%= f.file_field :image, id: "user_img", class: "form-control" %>
     <% if @account.image.present? %>
-      <%= image_tag @account.image, id: :img_prev %>
+      <%= image_tag @account.image.url, id: :img_prev %>
     <% else %>
       <%= image_tag "noimage.png", id: :img_prev %>
     <% end %>
