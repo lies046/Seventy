@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :accounts, controllers: { registrations: 'accounts/registrations', sessions: 'accounts/sessions'}
-  root "top#index"
+  root "shops#index"
+  resources :shops, only: [:show] do
+    resources :menus, only: [:show]
+  end
 
   #管理用
   namespace :admin do

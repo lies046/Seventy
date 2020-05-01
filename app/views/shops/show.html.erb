@@ -1,30 +1,21 @@
-<main role="main">
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Senventy</h1>
-    </div>
-  </section>
-
-  <div class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2 pt-5"><%= @account.shop_name%></h1>
       </div>
-      <h2></h2>
+      <h2>商品情報</h2>
        <%= render 'layouts/flash_messages' %>
         <div class="table-responsive">
-          <h3>テイクアウト実施店舗</h3>
           <div class="container">
             <div class="row">
-              <% @account.each do |account|%>
+              <% @menu.each do |menu|%>
                 <div class="row">
                   <div class="col-sm-6 col-md-3">
                     <div class="card border-primary m-4" style="width: 300px;">            
-                      <%= image_tag account.image.thumb.url %>
+                      <%= link_to image_tag(menu.image.thumb.url, width: :"297",height: :"250px"), shop_menu_path(menu.account_id, menu.id) %>
                       <div class="card-body">
-                        <p class="card-text"><%= account.shop_name %></p>
-                        <p class="card-text"><%= account.address %></p>
+                        <p class="card-text">  <%= menu.product_name %> <%= menu.price %>円</p>
                       </div>
                     </div>
                   </div>
@@ -36,7 +27,3 @@
     </main>
   </div>
 </div>
-
-
-
-</main>
