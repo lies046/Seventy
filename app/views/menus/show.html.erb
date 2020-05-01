@@ -7,9 +7,10 @@
             <h5 class="card-title"><%= @menu.product_name %></h5>
             <p class="card-text"><%= @menu.price%>円</p>
             <div class="text-right">
-              <a href="#" class="btn btn-primary">ボタン</a>
+              <%= button_to "カートへ追加", add_item_path,{params: {menu_id: @menu.id}}%>
             </div>
          </div>
        </div>
     </div>
   </div>
+
