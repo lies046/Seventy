@@ -3,7 +3,10 @@ class CartsController < ApplicationController
 
   def show
     @cart_items = current_cart.cart_items
-    
+    @total_price = 0
+    @cart_items.each do |price|
+      @total_price += price.menu.price
+    end
   end
 
   # 商品一覧画面から、「商品購入」を押した時のアクション

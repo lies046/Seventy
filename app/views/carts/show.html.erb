@@ -1,7 +1,7 @@
 <%= render "layouts/customer_header"%>
-  <div class=container>
+  <div class="container">
     <div class="row">
-      <table class="table table-bordered mt-5">
+      <table class="table table-bordered mt-5 text-right">
         <thead>
           <tr>
             <th>商品</th>
@@ -15,10 +15,11 @@
               <th scope="row"><%= image_tag order.menu.image.thumb.url, width:"100px" %></th>
               <td><%= order.menu.product_name%></td>
               <td><%= order.menu.price%>円</td>
-            </tr>
+            </tr> 
           </tbody>
         <% end %>
-        <%= @sum %>
     </table>
+      
   </div>
+  <p class="text-right font-weight-bold">合計金額 <%= @total_price.to_s(:delimited) %>円</p>
 </div>
