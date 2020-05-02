@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post '/update_item' => 'carts#update_item'
   delete '/delete_item' => 'carts#delete_item'
 
-  #管理用
+  #店舗用
   namespace :admin do
     root "top#index"
     resources :accounts, only: [:show] do

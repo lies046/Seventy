@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_05_02_091306) do
     t.string "shop_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "address"
+    t.string "address", null: false
     t.string "regular_holiday"
     t.time "opening_hours"
     t.time "closing_time"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 2020_05_02_091306) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latitude"
-    t.float "longitude"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end

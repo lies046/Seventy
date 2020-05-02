@@ -7,7 +7,7 @@ class DeviseCreateAccounts < ActiveRecord::Migration[6.0]
       t.string :shop_name,              null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.string :address
+      t.string :address, null: false
       t.string :regular_holiday
       t.time :opening_hours
       t.time :closing_time

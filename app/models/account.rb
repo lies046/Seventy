@@ -4,6 +4,7 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :menus, dependent: :destroy
+  validates :address, presence: true
   mount_uploader :image, AccountUploader
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
