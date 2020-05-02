@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  require 'payjp'
   before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
 
   def show
@@ -37,6 +38,26 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
     flash[:success] = "カートを削除しました。"
     redirect_to root_path
+  end
+
+  def pay
+    @cart_items = current_cart.cart_items
+    @total_price = 0
+    @cart_items.each do |price|
+      @total_price += price.menu.price
+    end
+
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      :amount => @total_price,
+      :card => params['payjp-token'],
+      :currency => 'jpy'
+    )
+    redirect_to action: :done
+  end
+
+  def done
+    session[:cart_id] = nil
   end
 
   private

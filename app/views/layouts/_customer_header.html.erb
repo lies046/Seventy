@@ -1,8 +1,7 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
   <%= link_to "テイクアウト", root_path, class:"my-0 mr-md-auto text-muted" %>
   <nav class="my-2 my-md-0 mr-md-3">
-     <a class="p-2 text-dark" href="#">Support</a>
-   <%= link_to "カート", cart_path, class:"p-2 text-dark" %>
+   <%= link_to "カート", cart_path(current_cart), class:"p-2 text-dark" %>
     <a class="p-2 text-dark" href="#">Support</a>
     <a class="p-2 text-dark" href="#">Pricing</a>
   </nav>

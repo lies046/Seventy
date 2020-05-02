@@ -6,8 +6,13 @@ Rails.application.routes.draw do
     resources :menus, only: [:show]
   end
 
-  resources :carts, only: [:show]
-  
+  resources :carts, only: [:show] do
+    member do
+      post 'pay' => 'carts#pay', as: 'pay'
+      get 'done' =>'carts#done', as: 'done'
+    end
+  end
+
   post '/add_item' => 'carts#add_item'
   post '/update_item' => 'carts#update_item'
   delete '/delete_item' => 'carts#delete_item'
