@@ -5,4 +5,6 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :menus, dependent: :destroy
   mount_uploader :image, AccountUploader
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end
