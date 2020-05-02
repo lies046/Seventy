@@ -1,8 +1,11 @@
 <%= render "layouts/customer_header"%>
   <div class="container">
+    <h3 class="mt-2">カート内</h3>
+    <%= render "layouts/flash_messages" %>
     <div class="row">
       <table class="table table-bordered mt-5 text-right">
         <thead>
+        <%= link_to "カートを削除する", delete_item_path, method: :delete, class: "btn btn-success m-2" %>
           <tr>
             <th>商品</th>
             <th>商品名</th>
@@ -19,7 +22,6 @@
           </tbody>
         <% end %>
     </table>
-      
   </div>
   <p class="text-right font-weight-bold">合計金額 <%= @total_price.to_s(:delimited) %>円</p>
 </div>
