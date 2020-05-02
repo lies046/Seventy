@@ -20,6 +20,8 @@
                       <div class="card-body">
                         <p class="card-text">  <%= menu.product_name %> <%= menu.price %>円</p>
                         <%= link_to "商品情報編集", edit_admin_account_menu_path(current_account.id, menu.id), class:"btn btn-primary"%>
+                        <%= link_to "商品削除", admin_account_menu_path(current_account.id, menu.id),
+                                    method: :delete, data: { confirm: '削除しますか？' },class:"btn btn-secondary ml-3" %>
                       </div>
                     </div>
                   </div>

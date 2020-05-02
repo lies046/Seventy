@@ -33,6 +33,13 @@ class Admin::MenusController < ApplicationController
     end
   end
 
+  def destroy
+    @menu = Menu.find(params[:id])
+    @menu.destroy
+    flash[:success] = "商品を削除しました。"
+    redirect_to admin_account_path(current_account.id)
+  end
+
   private
   def menu_params
     params.require(:menu).permit(:product_name, :price, :image)
