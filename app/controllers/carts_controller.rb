@@ -6,14 +6,14 @@ class CartsController < ApplicationController
     @cart_items = current_cart.cart_items
     @total_price = 0
     @cart_items.each do |price|
-      @total_price += price.menu.price
+      @total_price += price.menu.price * price.quantity
     end
   end
 
   # 商品一覧画面から、「商品購入」を押した時のアクション
   def add_item
     if @cart_item.blank?
-      @cart_item = current_cart.cart_items.build(menu_id: params[:menu_id])
+      @cart_item = current_cart.cart_items.build(menu_id: params[:menu_id], quantity: params[:quantity].to_i)
     end
 
     # @cart_item.quantity += params[:quantity].to_i
@@ -44,7 +44,7 @@ class CartsController < ApplicationController
     @cart_items = current_cart.cart_items
     @total_price = 0
     @cart_items.each do |price|
-      @total_price += price.menu.price
+      @total_price += price.menu.price * price.quantity
     end
 
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
