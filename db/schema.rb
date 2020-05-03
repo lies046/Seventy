@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_140739) do
+ActiveRecord::Schema.define(version: 2020_05_03_080244) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "shop_name", default: "", null: false
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 2020_05_02_140739) do
     t.integer "price", null: false
     t.string "image"
     t.index ["account_id"], name: "index_menus_on_account_id"
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.time "takeout", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "cart_items", "carts"

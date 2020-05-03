@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   def show
   end
 
-  # 商品一覧画面から、「商品購入」を押した時のアクション
+  # 商品一覧画面から、「カートへ追加」を押した時のアクション
   def add_item
     if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(menu_id: params[:menu_id])
