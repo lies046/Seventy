@@ -27,12 +27,12 @@
 
   <div class="form-group">
     <%= f.label :opening_hours %>
-    <%= f.time_select :opening_hours,:minute_step => 15 %>
+    <%= f.time_select :opening_hours,:minute_step => 15, prompt:true, ignore_data:true %>
   </div>
 
   <div class="form-group">
     <%= f.label :closing_time %>
-    <%= f.time_select :closing_time, :minute_step => 15 %>
+    <%= f.time_select :closing_time, :minute_step => 15, prompt:true, ignore_data:true %>
   </div>
 
   <div class="form-group">

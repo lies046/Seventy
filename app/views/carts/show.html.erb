@@ -8,6 +8,7 @@
         <%= link_to "カートを削除する", delete_item_path, method: :delete, class: "btn btn-success m-2" %>
           <tr>
             <th>商品</th>
+            <th>店名</th>
             <th>商品名</th>
             <th>値段</th>
             <th>数量</th>
@@ -17,6 +18,7 @@
           <tbody>
             <tr>
               <th scope="row"><%= image_tag order.menu.image.thumb.url, width:"100px" %></th>
+              <td><%= order.menu.account.shop_name%></td>
               <td><%= order.menu.product_name%></td>
               <td><%= order.menu.price * order.quantity%>円</td>
                <td><%= order.quantity%></td>
