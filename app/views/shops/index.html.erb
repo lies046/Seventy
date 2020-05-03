@@ -25,6 +25,7 @@
                           <div class="card-body">
                             <p class="card-text"><%= account.shop_name %></p>
                             <p class="card-text"><%= account.address %></p>
+                            <p class="card-text">営業時間 <%= account.opening_hours.strftime('%H:%M') %>~<%= account.closing_time.strftime('%H:%M') %></p>
                           </div>
                         </div>
                       </div>
