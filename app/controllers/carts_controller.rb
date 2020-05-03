@@ -13,12 +13,18 @@ class CartsController < ApplicationController
   # 商品一覧画面から、「商品購入」を押した時のアクション
   def add_item
     if @cart_item.blank?
-      @cart_item = current_cart.cart_items.build(menu_id: params[:menu_id], quantity: params[:quantity].to_i)
+      @cart_item = current_cart.cart_items.build(menu_id: params[:menu_id])
     end
 
-    # @cart_item.quantity += params[:quantity].to_i
-    @cart_item.save
+    @cart_item.quantity += params[:quantity].to_i
+
+    if @cart_item.save
     redirect_to cart_path(current_cart)
+    else
+      flash[:danger] = "数量を選択してください"
+      redirect_to cart_path(current_cart)
+    end
+
   end
 
   # カート詳細画面から、「更新」を押した時のアクション
