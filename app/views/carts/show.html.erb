@@ -28,7 +28,11 @@
     </table>
   </div>
   <p class="text-right font-weight-bold">合計金額 <%= @total_price.to_s(:delimited) %>円</p>
-  <%= form_with model: @order, url: pay_cart_path, method: :post, local: true do |f|%>
+  <%= form_with model: @cart, url: pay_cart_path, method: :post, local: true do |f|%>
+  <div class="form-group">
+    <%= f.label :takeout_time %>
+    <%= f.time_select :takeout_time, :minute_step => 15, prompt:true, ignore_data:true %>
+  </div>
   <script
     type="text/javascript"
     src="https://checkout.pay.jp"

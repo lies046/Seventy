@@ -6,7 +6,37 @@
     </div>
   </section>
 
-    <div class="containe">
-        <h2 class="text-center">ご購入ありがとうございました。</h2>
+    <div class="container">
+      <h2 class="text-center">ご購入ありがとうございました。</h2>
+      <h2>受け取り時間</h2>
+      <h3><%= @cart.takeout_time.strftime('%H:%M') %></h3>
+      <div class="row">
+        <table class="table table-bordered mt-5 text-right">
+          <thead>
+            <tr>
+              <th>商品</th>
+              <th>店名</th>
+              <th>商品名</th>
+              <th>値段</th>
+            </tr>
+          </thead>
+              <%  @cart_items.each do |item| %>
+          <tbody>
+              <tr>
+                <th scope="row"><%= image_tag item.menu.image.thumb.url, width:"100px" %></th>
+                <td><%= item.menu.account.shop_name%></td>
+                <td><%= item.menu.product_name%></td>
+                <td><%= item.menu.price * item.quantity%>円</td>        
+              </tr> 
+            </tbody>
+          <% end %>
+        </table>
+        <%= @sum %>
+      </div>
     </div>
 </main>
+
+
+
+
+
