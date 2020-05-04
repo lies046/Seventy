@@ -29,11 +29,7 @@ class CartsController < ApplicationController
   end
 
  # カート詳細画面から、「削除」を押した時のアクション
-  def delete_item
-    # @cart_item = CartItem.find(params[:id])
-    
-    # @cart_item.destroy
-    # redirect_to current_cart
+  def delete_item  
     @cart = current_cart
     @cart.destroy
     session[:cart_id] = nil
