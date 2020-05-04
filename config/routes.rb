@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root "top#index"
     resources :accounts, only: [:show] do
+      get 'order' => 'accounts#order'
       resources :menus
     end
+    
   end
 end

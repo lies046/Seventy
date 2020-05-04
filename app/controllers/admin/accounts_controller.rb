@@ -4,4 +4,8 @@ class Admin::AccountsController < ApplicationController
     @account = Account.find(params[:id])
     @menu = Menu.where(account_id: @account.id)
   end
+
+  def order
+    
+  end
 end

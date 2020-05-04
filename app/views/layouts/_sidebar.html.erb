@@ -7,6 +7,9 @@
       <li class="nav-item">
         <%= link_to "商品登録",  new_admin_account_menu_path(current_account.id),class:"nav-link text-muted" %>
       </li>
+      <li class="nav-item">
+        <%= link_to "オーダー情報", admin_account_order_path(current_account.id),class:"nav-link text-muted" %>
+      </li>
     </ul>
   </div>
 </nav>
