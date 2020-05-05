@@ -32,7 +32,7 @@
   <%= form_with model: @cart, url: pay_cart_path, method: :post, local: true do |f|%>
   <div class="form-group">
     <%= f.label :takeout_time %>
-    <%= f.time_select :takeout_time, :minute_step => 15, prompt:true, ignore_data:true %>
+    <%= f.time_select :takeout_time, start_hour: 10, end_hour: 23, :minute_step => 10, prompt:true, ignore_data:true %>
   </div>
   <script
     type="text/javascript"

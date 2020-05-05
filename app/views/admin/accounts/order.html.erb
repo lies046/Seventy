@@ -4,5 +4,9 @@
 <div class="container-fluid">
   <div class="row">
     <%= render "layouts/sidebar"%>
+    <% @order.each do |order|%>
+      <%= order.menu.product_name%>
+      <%= order.cart.takeout_time.strftime("%H:%M") %>
+    <% end %>
   </div>
 </div>
