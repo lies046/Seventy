@@ -18,3 +18,10 @@ table th:nth-child(1) {
 #credit{
   display: none;
 }
+
+.banner {
+  width:100%;
+  height: 250px;
+  background-image: image-url('banner.jpg');
+  background-size: cover;
+}
