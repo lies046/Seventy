@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   require 'payjp'
   before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
-  before_action :set_total_price, only: [:show, :pay]
+  before_action :set_total_price, only: [:show, :pay, :done]
 
   def show
   end
@@ -29,11 +29,7 @@ class CartsController < ApplicationController
   end
 
  # カート詳細画面から、「削除」を押した時のアクション
-  def delete_item
-    # @cart_item = CartItem.find(params[:id])
-    
-    # @cart_item.destroy
-    # redirect_to current_cart
+  def delete_item  
     @cart = current_cart
     @cart.destroy
     session[:cart_id] = nil
@@ -41,7 +37,9 @@ class CartsController < ApplicationController
     redirect_to root_path
   end
 
-  def pay    
+  def pay
+    @cart = Cart.find(params[:id])
+    @cart.update(takeout_time_params)
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       :amount => @total_price,
@@ -62,10 +60,15 @@ class CartsController < ApplicationController
   end
 
   def set_total_price
-    @cart_items = current_cart.cart_items
+    @cart = Cart.find(params[:id])
+    @cart_items = @cart.cart_items
     @total_price = 0
     @cart_items.each do |price|
       @total_price += price.menu.price * price.quantity
     end
+  end
+
+  def takeout_time_params
+    params.require(:cart).permit(:takeout_time)
   end
 end

@@ -4,4 +4,19 @@ class Admin::AccountsController < ApplicationController
     @account = Account.find(params[:id])
     @menu = Menu.where(account_id: @account.id)
   end
-end
+
+  def order
+    @account = Account.find(current_account.id)
+    @menu = Menu.where(account_id: @account.id)
+    @order = CartItem.where(menu_id: @menu)
+  end
+end 
+
+
+
+
+# @cart.each do |cart| 
+#       cart.cart_items.each do |menu| 
+#         menu.menu_id
+#       end 
+#     end 

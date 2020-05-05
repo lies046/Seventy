@@ -12,3 +12,10 @@ $(function () {
     readURL(this);
   });
 });
+
+
+$(function () {
+  $('#cart_takeout_time_5i').change(function () {
+    $('#credit').show();
+  });
+});

@@ -15,3 +15,5 @@ ja:
         product_name: 商品名
         price: 金額
         image: 商品画像
+      cart:
+        takeout_time: 受け取り時間
