@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name, :address, :opening_hours, :closing_time, :image, :regular_holiday)
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name, :address, :opening_hours, :closing_time, :image, :regular_holiday])
     devise_parameter_sanitizer.permit(:account_update, keys: [:shop_name,:address, :regular_holiday, :opening_hours, :closing_time, :image])
   end
 
