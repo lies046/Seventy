@@ -1,65 +1,68 @@
 <body class="mt-5">
 
 <h2 class="text-center">新規登録</h2>
-<div class ="container mb-5">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class ="container mb-5">
+    <div class="row">
+      <div class="col-sm-6 m-sm-auto px-4">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="form-group">
-    <%= f.label :shop_name %> <p class="d-inline text-danger">(必須)</p><br />
-    <%= f.text_field :shop_name,class: "form-control",required: true %>
-  </div>
+          <div class="form-group">
+            <%= f.label :shop_name %> <p class="d-inline text-danger">(必須)</p><br />
+            <%= f.text_field :shop_name,class: "form-control",required: true %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :email %> <p class="d-inline text-danger">(必須)</p><br />
-    <%= f.email_field :email, autocomplete: "email", class: "form-control",required: true  %>
-  </div>
+          <div class="form-group">
+            <%= f.label :email %> <p class="d-inline text-danger">(必須)</p><br />
+            <%= f.email_field :email, autocomplete: "email", class: "form-control",required: true  %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :address %><p class="d-inline text-danger">(必須)</p><br />
-    <%= f.text_field :address, class: "form-control",required: true %>
-  </div>
-        
-  <div class="form-group">
-    <%= f.label :regular_holiday %>
-    <%= f.text_field :regular_holiday, class: "form-control" %>
-  </div>
+          <div class="form-group">
+            <%= f.label :address %><p class="d-inline text-danger">(必須)</p><br />
+            <%= f.text_field :address, class: "form-control",required: true %>
+          </div>
+                
+          <div class="form-group">
+            <%= f.label :regular_holiday %>
+            <%= f.text_field :regular_holiday, class: "form-control" %>    
+            <% end %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :opening_hours %>
-    <%= f.time_select :opening_hours,:minute_step => 15, prompt:true, ignore_data:true %>
-  </div>
+          <div class="form-group">
+            <%= f.label :opening_hours %>
+            <%= f.time_select :opening_hours,:minute_step => 15, prompt:true, ignore_data:true %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :closing_time %>
-    <%= f.time_select :closing_time, :minute_step => 15, prompt:true, ignore_data:true %>
-  </div>
+          <div class="form-group">
+            <%= f.label :closing_time %>
+            <%= f.time_select :closing_time, :minute_step => 15, prompt:true, ignore_data:true %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :image %><p class="d-inline text-danger">(必須)</p><br />
-    <%= f.file_field :image, id: "user_img", class: "form-control" %>
-    <% if @account.image.present? %>
-      <%= image_tag @account.image, size: "300x300", id: :img_prev %>
-    <% else %>
-      <%= image_tag "noimage.png", size: "300x300", id: :img_prev %>
-    <% end %>
-  </div>
+          <div class="form-group">
+            <%= f.label :image %><p class="d-inline text-danger">(必須)</p><br />
+            <%= f.file_field :image, id: "user_img", class: "form-control" %>
+            <% if @account.image.present? %>
+              <%= image_tag @account.image, size: "300x300", id: :img_prev %>
+            <% else %>
+              <%= image_tag "noimage.png", size: "300x300", id: :img_prev %>
+            <% end %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :password %> <p class="d-inline text-danger">(必須)</p><br />
-    <% if @minimum_password_length %>
-    <em><%= @minimum_password_length %> 文字以上</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password",class: "form-control",required: true  %>
-  </div>
+          <div class="form-group">
+            <%= f.label :password %> <p class="d-inline text-danger">(必須)</p><br />
+            <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %> 文字以上</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password",class: "form-control",required: true  %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation %> <p class="d-inline text-danger">(必須)</p><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", required: true %>
+          <div class="form-group">
+            <%= f.label :password_confirmation %> <p class="d-inline text-danger">(必須)</p><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", required: true %>
+          </div>
+          <%= f.submit "新規登録", class: "btn btn-primary "%>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-    <%= f.submit "新規登録", class: "btn btn-primary "%>
-  </div>
-  </div>
-<% end %>
 </body>

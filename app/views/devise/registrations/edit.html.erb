@@ -1,70 +1,76 @@
-<body class="text-center mt-5">
-  <h2>店舗情報編集</h2>
+<body class="mt-5">
+  <h2 class="text-center">店舗情報編集</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="container">
+  <div class ="container mb-5">
+    <div class="row">
+      <div class="col-sm-6 m-sm-auto px-4">
 
-    <div class="form-group">
-      <%= f.label :shop_name %><br />
-      <%= f.text_field :shop_name,class: "form-control" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :shop_name %><br />
+          <%= f.text_field :shop_name,class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" %>
+        </div>
 
-    <div class="form-group">
-      <%= f.label :address %>
-      <%= f.text_field :address, class: "form-control" %>
-    </div>
-          
-    <div class="form-group">
-      <%= f.label :regular_holiday %>
-      <%= f.text_field :regular_holiday, class: "form-control" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :address %>
+          <%= f.text_field :address, class: "form-control" %>
+        </div>
+              
+        <div class="form-group">
+          <%= f.label :regular_holiday %>
+          <%= f.text_field :regular_holiday, class: "form-control" %>
+        </div>
 
-    <div class="form-group">
-      <%= f.label :opening_hours %>
-      <%= f.time_select :opening_hours,:minute_step => 15, prompt:true, ignore_data:true %>
+        <div class="form-group">
+          <%= f.label :opening_hours %>
+          <%= f.time_select :opening_hours,:minute_step => 15, prompt:true, ignore_data:true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :closing_time %>
+          <%= f.time_select :closing_time, :minute_step => 15, prompt:true, ignore_data:true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image, id: "user_img", class: "form-control" %>
+          <% if @account.image.present? %>
+            <%= image_tag @account.image.url, id: :img_prev %>
+          <% else %>
+            <%= image_tag "noimage.png", id: :img_prev %>
+          <% end %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :password %> <i></i><br />
+          <%= f.password_field :password, autocomplete: "new-password",class: "form-control"%>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> 文字以上</em>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control" %>
+        </div>
+
+        <div class="action">
+        <%= f.submit "更新", class: "btn btn-primary mt-2 mr-3"%>
+        <%= link_to "Back", :back, class:"btn btn-secondary mt-2" %>
+        </div>
+        <% end %>
+      </div>
     </div>
-
-    <div class="form-group">
-      <%= f.label :closing_time %>
-      <%= f.time_select :closing_time, :minute_step => 15, prompt:true, ignore_data:true %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :image %>
-      <%= f.file_field :image, id: "user_img", class: "form-control" %>
-      <% if @account.image.present? %>
-        <%= image_tag @account.image.url, id: :img_prev %>
-      <% else %>
-        <%= image_tag "noimage.png", id: :img_prev %>
-      <% end %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password %> <i></i><br />
-      <%= f.password_field :password, autocomplete: "new-password",class: "form-control"%>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> 文字以上</em>
-      <% end %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control" %>
-    </div>
-
-    <%= f.submit "更新", class: "btn btn-primary mt-5"%>
-    <% end %>
-  </div>
-    <%= link_to "Back", :back, class:"btn btn-secondary mt-2" %>
+  </div>   
 </body>
