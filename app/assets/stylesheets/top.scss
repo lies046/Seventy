@@ -2,9 +2,6 @@
   margin-top: 150px !important;
 }
 
-.admin-top{
-  margin-top: 50px;
-}
 
 #img_prev{
   width: 50%;
@@ -24,4 +21,25 @@ table th:nth-child(1) {
   height: 250px;
   background-image: image-url('banner.jpg');
   background-size: cover;
+}
+
+.background{
+  width:100%;
+  height: 100vh;
+  background-image: image-url('admin.jpg');
+  background-size: cover;
+}
+.background::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, 0.4);
+}
+
+.pricing-header{
+  padding:150px;
 }

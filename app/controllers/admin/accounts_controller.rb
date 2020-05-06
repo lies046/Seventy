@@ -11,12 +11,3 @@ class Admin::AccountsController < ApplicationController
     @order = CartItem.where(menu_id: @menu)
   end
 end 
-
-
-
-
-# @cart.each do |cart| 
-#       cart.cart_items.each do |menu| 
-#         menu.menu_id
-#       end 
-#     end 
