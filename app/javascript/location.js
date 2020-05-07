@@ -15,8 +15,8 @@ $(function () {
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             var address = results[6].formatted_address.replace(/日本、〒/, '').replace(/^(\d{3}-{1}\d{4})|(\d{7})$/, '')
-            console.log(results)
             document.getElementById('location').value = address;
+            // document.getElementById('walking').innerHTML = "https://maps.googleapis.com/maps/api/directions/json?origin=address&destination=gon.address&key=ENV[GOOGLE_MAP_KEY]"
           }
           else {
             alert("エラー" + status);
