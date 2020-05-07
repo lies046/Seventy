@@ -14,8 +14,9 @@ $(function () {
         latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
+            var address = results[6].formatted_address.replace(/日本、〒/, '').replace(/^(\d{3}-{1}\d{4})|(\d{7})$/, '')
             console.log(results)
-            document.getElementById('location').value = results[6].formatted_address;
+            document.getElementById('location').value = address;
           }
           else {
             alert("エラー" + status);
