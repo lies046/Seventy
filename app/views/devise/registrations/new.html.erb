@@ -19,7 +19,8 @@
 
           <div class="form-group">
             <%= f.label :address %><p class="d-inline text-danger">(必須)</p><br />
-            <%= f.text_field :address, class: "form-control",required: true %>
+            <%= f.text_field :address, class: "form-control",required: true, id:"location" %>
+            <p><button id="button">Show my location</button></p>
           </div>
                 
           <div class="form-group">
