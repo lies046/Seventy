@@ -43,3 +43,10 @@ table th:nth-child(1) {
 .pricing-header{
   padding:150px;
 }
+
+.card{
+  transition:box-shadow 0.3s !important;
+&:hover {
+  box-shadow:0 0 20px rgba(0, 110, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.3) !important;
+  }
+}
