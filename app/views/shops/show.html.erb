@@ -5,9 +5,10 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2 pt-5"><%= @account.shop_name%></h1>
       </div>
-      <iframe class="ml-lg-4 mt-3" width="320" height="240" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAP_KEY']%>&q=<%= @account.address.to_param%>"  allowfullscreen></iframe>
-      <div class="btn btn-success" id="button"></div>
-      <div id="walking"></div>
+        <iframe class="ml-lg-4 mt-3" width="320" height="240" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAP_KEY']%>&q=<%= @account.address.to_param%>"  allowfullscreen></iframe>
+        <div class="ml-4">
+        <button type="button" class="btn btn-primary" id="time">現在位置から店舗までの所要時間表示</button>
+        </div>
       <h2 class="mt-5">商品情報</h2>
        <%= render 'layouts/flash_messages' %>
         <div class="table-responsive">

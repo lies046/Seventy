@@ -1,6 +1,7 @@
 $(function () {
-  $("#button").click(function () {
+  $("#time").click(function () {
     if (navigator.geolocation) {// 現在位置を取得できる場合の処理
+      var outputDiv = document.getElementById('time');
       // 現在位置を取得する
       navigator.geolocation.getCurrentPosition(success, error, option);
       /*現在位置が取得できた時に実行*/
@@ -14,8 +15,39 @@ $(function () {
         latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            var address = results[6].formatted_address.replace(/日本、〒/, '').replace(/^(\d{3}-{1}\d{4})|(\d{7})$/, '')
-            document.getElementById('location').value = address;
+            var address = results[0].formatted_address
+            var origin1 = address;
+            var destinationB = gon.address;
+
+            var geocoder = new google.maps.Geocoder;
+
+            var service = new google.maps.DistanceMatrixService;
+            service.getDistanceMatrix({
+              origins: [origin1],
+              destinations: [destinationB],
+              travelMode: 'WALKING',
+              unitSystem: google.maps.UnitSystem.METRIC,
+              avoidHighways: false,
+              avoidTolls: false
+            }, function (response, status) {
+              if (status !== 'OK') {
+                alert('Error was: ' + status);
+              } else {
+                var originList = response.originAddresses;
+                // var outputDiv = document.getElementById('time');
+                outputDiv.innerHTML = '';
+
+                for (var i = 0; i < originList.length; i++) {
+                  var results = response.rows[i].elements;
+                  geocoder.geocode
+                  for (var j = 0; j < results.length; j++) {
+                    outputDiv.innerHTML +=
+                      results[j].duration.text;
+                  }
+                }
+              }
+
+            });
           }
           else {
             alert("エラー" + status);
@@ -43,5 +75,7 @@ $(function () {
       //とりあえずalert
       alert("あなたの端末では、現在位置を取得できません。");
     }
+    outputDiv.innerHTML = "<p>検索中...</p>"
+
   });
 })
