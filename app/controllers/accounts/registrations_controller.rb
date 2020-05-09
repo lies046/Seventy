@@ -4,6 +4,11 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  before_action :color_string, only: [:create, :update] 
+  def color_string
+    params[:account][:regular_holiday] = params[:account][:regular_holiday].join("・")  # to string
+  end
+
   # GET /resource/sign_up
   # def new
   #   super

@@ -1,5 +1,6 @@
 $(function () {
   $("#button").click(function () {
+    var outputDiv = document.getElementById('location');
     if (navigator.geolocation) {// 現在位置を取得できる場合の処理
       // 現在位置を取得する
       navigator.geolocation.getCurrentPosition(success, error, option);
@@ -14,8 +15,8 @@ $(function () {
         latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            var address = results[6].formatted_address.replace(/日本、〒/, '').replace(/^(\d{3}-{1}\d{4})|(\d{7})$/, '')
-            document.getElementById('location').value = address;
+            var address = results[6].formatted_address.replace(/日本、〒/, "").replace(/^(\d{3}-{1}\d{4})|(\d{7})$/, "")
+            document.getElementById('location').value = address.replace(/^\s+/, "");
           }
           else {
             alert("エラー" + status);
@@ -43,5 +44,6 @@ $(function () {
       //とりあえずalert
       alert("あなたの端末では、現在位置を取得できません。");
     }
+    outputDiv.value = "検索中..."
   });
 })
