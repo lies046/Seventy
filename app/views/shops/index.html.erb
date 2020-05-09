@@ -16,16 +16,18 @@
                     <div class="row">
                       <div class="col-sm-6 col-md-3">
                         <div class="card border-secondary m-4" style="width: 300px;">
-                          <%= link_to image_tag(account.image.thumb.url, width: :"100%",height: :"250px"), shop_path(account.id) %>
+                          <%= link_to shop_path(account.id), class:"cardtext" do%>
+                          <%= image_tag(account.image.thumb.url, width: :"100%",height: :"250px")%>
                           <div class="card-body">
-                            <p class="card-text"><%= account.shop_name %></p>
-                            <p class="card-text"><%= account.address %></p>
-                            <p class="card-text">営業時間 <%= account.opening_hours.strftime('%H:%M') %>~<%= account.closing_time.strftime('%H:%M') %></p>
-                            <p class="card-text">定休日 <%= account.regular_holiday %>
+                            <p class="card-text text-muted"><%= account.shop_name %></p>
+                            <p class="card-text text-muted"><%= account.address %></p>
+                            <p class="card-text text-muted">営業時間 <%= account.opening_hours.strftime('%H:%M') %>~<%= account.closing_time.strftime('%H:%M') %></p>
+                            <p class="card-text text-muted">定休日 <%= account.regular_holiday %>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <% end %>
                   <% end %>
                 </div>
             </div>

@@ -1,14 +1,21 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar pt-5 text-muted" style="height: 100vh;">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
-      <li class="nav-item">      
-        <%= link_to "店舗情報編集",  edit_account_registration_path,class:"nav-link text-muted" %>
+      <li class="nav-item">
+        <%= link_to edit_account_registration_path,class:"nav-link text-muted" do%>
+        <i class="fas fa-user-edit mr-2"></i>店舗情報編集
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "商品登録",  new_admin_account_menu_path(current_account.id),class:"nav-link text-muted" %>
+      
+        <%= link_to new_admin_account_menu_path(current_account.id), class:"nav-link text-muted" do %>
+        <i class="fas fa-utensils mr-3"></i>商品登録
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "オーダー情報", admin_account_order_path(current_account.id),class:"nav-link text-muted" %>
+        <%= link_to admin_account_order_path(current_account.id),class:"nav-link text-muted" do %>
+        <i class="far fa-bell mr-3"></i>オーダー情報
+        <% end %>
       </li>
     </ul>
   </div>
