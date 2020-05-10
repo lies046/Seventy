@@ -5,7 +5,6 @@
     <div class="row">
       <table class="table table-bordered mt-5 text-right">
         <thead>
-        <%= link_to "カートを削除する", delete_item_path, method: :delete, class: "btn btn-success m-2" %>
           <tr>
             <th>商品</th>
             <th>店名</th>
@@ -13,18 +12,20 @@
             <th>単価</th>
             <th>数量</th>
             <th>小計</th>
+            <th></th>
           </tr>
         </thead>
         <% @cart_items.each do |order| %>
           <tbody>
             <tr>
               <th scope="row"><%= image_tag order.menu.image.thumb.url, width:"100px" %></th>
-              <td><%= order.menu.account.shop_name%></td>
+              <td><%= link_to order.menu.account.shop_name, shop_path(order.menu.account.id) %></td>
               <td><%= order.menu.product_name%></td>
               <td><%= order.menu.price%>円</td>
-               <td><%= order.quantity%></td>
-               <td><%= order.menu.price * order.quantity%>円</td>
-              </tr> 
+              <td><%= order.quantity%></td>
+              <td><%= order.menu.price * order.quantity%>円</td>
+              <td><%= link_to "削除", delete_item_path(order.id), method: :delete, data:{confirm: "削除しますか？"}%></td>
+            </tr> 
           </tbody>
         <% end %>
     </table>

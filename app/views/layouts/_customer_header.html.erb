@@ -1,7 +1,7 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
   <%= link_to image_tag("Seventy-logo", width:"150"), root_path, class:"my-0 mr-md-auto text-muted" %>
   <nav class="my-2 my-md-0 mr-md-3">
-    
+    <%= link_to "TOP", root_path, class:"text-dark" %>
     <%= link_to cart_path(current_cart), class:"p-2 text-dark" do %>
     <i class="fas fa-shopping-cart"></i>カート
     <% end %>

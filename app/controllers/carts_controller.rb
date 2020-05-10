@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   require 'payjp'
-  before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
+  before_action :setup_cart_item!, only: [:add_item, :update_item]
   before_action :set_total_price, only: [:show, :pay, :done]
 
   def show
@@ -30,11 +30,13 @@ class CartsController < ApplicationController
 
  # カート詳細画面から、「削除」を押した時のアクション
   def delete_item  
-    @cart = current_cart
-    @cart.destroy
-    session[:cart_id] = nil
-    flash[:success] = "カートを削除しました。"
-    redirect_to root_path
+    cart = CartItem.find(params[:id])
+    cart.destroy
+    # # @cart = current_cart
+    # # @cart.destroy
+    # # session[:cart_id] = nil
+    flash[:success] = "商品をカートから削除しました。"
+    redirect_to current_cart
   end
 
   def pay

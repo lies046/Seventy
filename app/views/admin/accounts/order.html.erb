@@ -14,10 +14,12 @@
           </thead>
             <% @order.each_with_index do |order, i|%>
               <tbody>
+                <% if order.cart.takeout_time.present? %>
                 <tr>
                   <th scope="row"><%= i + 1 %></th>
                   <td><%= order.menu.product_name%></td>
                   <td><%= order.cart.takeout_time.strftime("%H:%M") %></td>
+                  <% end %>
                 </tr> 
               </tbody>
             <% end %>
