@@ -12,7 +12,6 @@ services:
       - 3307:3306
     volumes:
       - mysql-volume:/var/lib/mysql
-
   webpacker:
     build: .
     command: bundle exec bin/webpack-dev-server

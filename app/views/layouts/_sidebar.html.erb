@@ -1,0 +1,12 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar pt-5 text-muted" style="height: 100vh;">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">      
+        <%= link_to "店舗情報編集",  edit_account_registration_path,class:"nav-link text-muted" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "商品登録",  new_admin_account_menu_path(current_account.id),class:"nav-link text-muted" %>
+      </li>
+    </ul>
+  </div>
+</nav>

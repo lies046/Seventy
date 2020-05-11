@@ -1,0 +1,18 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+  <%= link_to "テイクアウト", admin_account_path(current_account.id), class:"my-0 mr-md-auto text-muted" %>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <%= link_to "店舗情報編集",  edit_account_registration_path,class:"p-2 text-dark" %>         
+    <%= link_to "商品登録",  new_admin_account_menu_path(current_account.id),class:"p-2 text-dark" %>  
+  </nav>
+  <% if account_signed_in? %>
+      <%= link_to "ログアウト", destroy_account_session_path, method: :delete, class:"btn btn-secondary mr-2 float-sm-right"%>       
+  <% else %>
+    <%= link_to "Log In",new_account_session_path, class:"btn btn-secondary mr-2 float-sm-right" %>
+    <%= link_to "Sign up",new_account_registration_path, class:"btn btn-success float-sm-right" %>
+  <% end%>
+</div>
+
+
+
+
+

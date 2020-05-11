@@ -1,0 +1,34 @@
+<%= render "admin/header"%>
+
+<div class="container-fluid">
+  <div class="row">
+<%= render "layouts/sidebar"%>
+  <div class="col-sm-6 mx-auto mt-5">
+    <%= render 'layouts/flash_messages' %>
+  <%= form_with url: admin_account_menus_path, model: @menu,local: true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :product_name %>
+        <%= f.text_field :product_name, class: "form-control" %>
+      </div>
+            
+      <div class="form-group">
+        <%= f.label :price %>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image, id: "user_img", class: "form-control" %>
+        <% if @menu.image.present? %>
+          <%= image_tag @menu.image, id: :img_prev %>
+        <% else %>
+          <%= image_tag "noimage.png", id: :img_prev %>
+        <% end %>
+      </div>
+      <%= f.submit "登録", class: "btn btn-primary "%>
+    <% end %>
+    </div>
+  </div>
+</div>
+
