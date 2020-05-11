@@ -31,10 +31,14 @@ class CartsController < ApplicationController
 
  # カート詳細画面から、「削除」を押した時のアクション
   def delete_item
+    cart = current_cart
     item = CartItem.find(params[:id])
-    item.destroy
-    flash[:success] = "商品をカートから削除しました。"
-    redirect_to current_cart
+    
+    if cart.id == item.cart_id
+      item.destroy
+      flash[:success] = "商品をカートから削除しました。"
+      redirect_to current_cart
+    end
   end
 
   def pay
