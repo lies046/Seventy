@@ -2,6 +2,7 @@ class CartsController < ApplicationController
   require 'payjp'
   before_action :setup_cart_item!, only: [:add_item, :update_item]
   before_action :set_total_price, only: [:show, :pay, :done]
+  before_action :current_cart_user, only:[:show]
 
   def show
   end
@@ -29,12 +30,9 @@ class CartsController < ApplicationController
   end
 
  # カート詳細画面から、「削除」を押した時のアクション
-  def delete_item  
-    cart = CartItem.find(params[:id])
-    cart.destroy
-    # # @cart = current_cart
-    # # @cart.destroy
-    # # session[:cart_id] = nil
+  def delete_item
+    item = CartItem.find(params[:id])
+    item.destroy
     flash[:success] = "商品をカートから削除しました。"
     redirect_to current_cart
   end
@@ -72,5 +70,12 @@ class CartsController < ApplicationController
 
   def takeout_time_params
     params.require(:cart).permit(:takeout_time)
+  end
+
+  def current_cart_user
+    cart = Cart.find(params[:id])
+    unless cart == current_cart
+      redirect_to root_path
+    end
   end
 end
