@@ -1,6 +1,6 @@
 class Admin::AccountsController < ApplicationController
   before_action :authenticate_account!
-  before_action :set_account
+  before_action :set_account, only:[:show]
   def show
     @account = Account.find(params[:id])
     @menus = Menu.where(account_id: @account.id)
