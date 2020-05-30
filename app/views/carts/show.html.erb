@@ -1,5 +1,6 @@
 <%= render "layouts/customer_header"%>
-  <div class="container">
+<div class="container">
+  <% if @cart_items.present? %>
     <h3 class="mt-2">カート内</h3>
     <%= render "layouts/flash_messages" %>
     <div class="row">
@@ -28,22 +29,25 @@
             </tr> 
           </tbody>
         <% end %>
-    </table>
-  </div>
-  <p class="text-right font-weight-bold">合計金額 <%= @total_price.to_s(:delimited) %>円</p>
-  <%= form_with model: @cart, url: pay_cart_path, method: :post, local: true do |f|%>
-  <p>下記の受け取り時間を選択してください。下記選択後決済ボタンが表示されます。</p>
-  <div class="form-group">
-    <%= f.label :takeout_time %>
-    <%= f.time_select :takeout_time, start_hour: 10, end_hour: 23, :minute_step => 10, prompt:true, ignore_data:true %>
-  </div>
-  <div id="credit">
-  <script
-    type="text/javascript"
-    src="https://checkout.pay.jp"
-    class="payjp-button"
-    data-key="<%= ENV['PAYJP_PUBLIC_KEY'] %>">
-  </script>
-  </div>
+      </table>
+    </div>
+    <p class="text-right font-weight-bold">合計金額 <%= @total_price.to_s(:delimited) %>円</p>
+    <%= form_with model: @cart, url: pay_cart_path, method: :post, local: true do |f|%>
+    <p>下記の受け取り時間を選択してください。下記選択後決済ボタンが表示されます。</p>
+    <div class="form-group">
+      <%= f.label :takeout_time %>
+      <%= f.time_select :takeout_time, start_hour: 10, end_hour: 23, :minute_step => 10, prompt:true, ignore_data:true %>
+    </div>
+    <div id="credit">
+    <script
+      type="text/javascript"
+      src="https://checkout.pay.jp"
+      class="payjp-button"
+      data-key="<%= ENV['PAYJP_PUBLIC_KEY'] %>">
+    </script>
+    </div>
+    <% end %>
+  <% else %>
+    <h3 class="mt-2">カート内は空です。</h3>
   <% end %>
 </div>
